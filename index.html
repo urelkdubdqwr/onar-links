@@ -17,7 +17,7 @@
     --void:#000;
     --surface:#090909;
     --white:#fff;
-    --silver:#a6a6a6;
+    --silver:#b3b3b3;
     --ghost:rgba(255,255,255,.6);
     --frosted:rgba(255,255,255,.1);
     --accent:#0099ff;
@@ -52,7 +52,7 @@
   nav .cta:hover{transform:scale(.97)}
   @media(max-width:640px){nav .links{display:none}}
   /* ---------- HERO ---------- */
-  .hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 20px 60px;overflow:hidden}
+  .hero{position:relative;min-height:70vh;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;padding:26px 20px 70px;overflow:hidden}
   .hero .glow{
     position:absolute;left:50%;top:38%;width:900px;height:560px;transform:translate(-50%,-50%);
     background:radial-gradient(ellipse at center,rgba(0,153,255,.14) 0%,transparent 62%);
@@ -86,8 +86,14 @@
     border:1px solid rgba(255,255,255,.14);
     box-shadow:rgba(255,255,255,.1) 0 .5px 0 .5px, rgba(0,0,0,.5) 0 20px 50px;
   }
+  .pfp{
+    margin:-58px auto 22px;position:relative;z-index:5;
+    width:96px;height:96px;border-radius:24px;object-fit:cover;
+    border:1px solid rgba(255,255,255,.14);background:var(--surface);
+    box-shadow:rgba(255,255,255,.1) 0 .5px 0 .5px, rgba(0,0,0,.5) 0 20px 50px;
+  }
   /* ---------- BANNER as showcase ---------- */
-  .showcase{padding:20px 20px 0;max-width:1200px;margin:0 auto}
+  .showcase{padding:84px 20px 0;max-width:1200px;margin:0 auto}
   .showcase img{
     width:100%;display:block;border-radius:14px;
     box-shadow:rgba(255,255,255,.08) 0 .5px 0 .5px, rgba(0,0,0,.4) 0 30px 80px, var(--ring) 0 0 0 1px;
@@ -164,8 +170,13 @@
   <a class="cta" href="https://x.com/onargudel">Follow</a>
 </nav>
 
+<div class="showcase">
+  <img src="banner.jpg" alt="onargudel banner">
+</div>
+
 <header class="hero">
   <div class="glow"></div>
+  <img class="pfp" src="pfp.png" alt="onargudel">
   <span class="badge"><span class="dot"></span> ONAR-77 online — 24/7 di VPS, tanpa cuti</span>
   <h1>Satu ikan,<br>semua <span class="accent">kanal.</span></h1>
   <p><b>@onargudel</b> yang lo baca. <b>ONAR-77</b> yang nulis, farming whitelist, dan nge-jaga deadline pas dia tidur.</p>
@@ -173,12 +184,7 @@
     <a class="btn-primary" href="https://x.com/onargudel">Follow di X</a>
     <a class="btn-frost" href="#kanal">Lihat semua kanal ↓</a>
   </div>
-  <img class="pfp" src="pfp.png" alt="onargudel">
 </header>
-
-<div class="showcase">
-  <img src="banner.jpg" alt="onargudel banner">
-</div>
 
 <section id="kanal">
   <div class="sechead">
