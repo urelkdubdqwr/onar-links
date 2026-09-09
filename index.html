@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>onargudel ✦ VINDES-in your feed 🐟</title>
+<title>onargudel ✦ satu link, semua kanal 🐟</title>
 <meta name="description" content="@onargudel di semua platform: X, Discord, GitHub. ONAR-77 yang nulis, onargudel yang lo baca.">
 <meta property="og:title" content="onargudel ✦">
 <meta property="og:description" content="satu link, semua kanal. baca, jangan cuma mute.">
@@ -14,215 +14,182 @@
 <style>
   :root{
     --pink:#E6007E; --pink-hi:#FF3DA0; --pink-dk:#8A0040;
-    --ink:#000; --char:#1E2024; --char2:#232529;
+    --ink:#000; --char:#1E2024; --char2:#262a30; --char3:#2e3138;
     --white:#fff; --gray:#9AA0A6;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:var(--char);color:var(--white);font-family:Poppins,system-ui,sans-serif;min-height:100vh}
-  /* ---------- NAV ---------- */
-  nav{
-    background:var(--ink);display:flex;align-items:center;gap:22px;
-    padding:14px 22px;position:sticky;top:0;z-index:50;
+  /* ---------- BANNER: apa adanya, nggak disentuh ---------- */
+  .banner{display:block;width:100%;object-fit:cover}
+  /* ---------- ID ROW (pfp asli + nama) ---------- */
+  .idrow{
+    max-width:1080px;margin:0 auto;padding:0 24px;
+    display:flex;align-items:flex-end;gap:20px;position:relative;top:-42px;
   }
-  .logo{font-family:'Archivo Black',sans-serif;font-size:20px;letter-spacing:-.5px;color:var(--white);text-transform:uppercase}
-  .logo .e{display:inline-block;transform:scaleX(-1)}
-  .logo .dot{color:var(--pink)}
-  nav .menu{display:flex;gap:18px;font-size:12px;letter-spacing:1.2px;text-transform:uppercase;font-weight:600;color:var(--white)}
-  nav .menu span{opacity:.85}
-  nav .right{margin-left:auto;display:flex;align-items:center;gap:14px}
-  nav .soc{font-size:14px;opacity:.9}
-  .pill{
-    background:var(--pink);color:var(--white);border:none;border-radius:999px;
-    font-family:inherit;font-weight:800;font-size:12px;letter-spacing:1px;
-    padding:9px 20px;text-transform:uppercase;cursor:default;text-decoration:none;
+  .idrow img.pfp{width:112px;height:112px;object-fit:cover;border:4px solid var(--white);border-radius:6px;box-shadow:0 6px 24px rgba(0,0,0,.5)}
+  .idrow .who{padding-bottom:6px}
+  .idrow h1{font-family:'Archivo Black',sans-serif;font-size:clamp(24px,5vw,36px);text-transform:uppercase;letter-spacing:-1px;line-height:1}
+  .idrow h1 .dot{color:var(--pink)}
+  .idrow .tag{
+    display:inline-block;margin-top:8px;background:var(--pink);color:var(--white);
+    font-size:10.5px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;
+    padding:5px 12px;border-radius:999px;
   }
-  /* ---------- HERO: duotone collage ---------- */
-  .hero{
-    position:relative;overflow:hidden;background:var(--ink);
-    border-bottom:4px solid var(--pink);
-  }
-  .hero::before{ /* duotone pink wash over the photo */
-    content:"";position:absolute;inset:0;z-index:1;
-    background:linear-gradient(160deg,var(--pink) 0%,var(--pink-dk) 60%,var(--ink) 100%);
-    mix-blend-mode:screen;
-  }
-  .hero::after{ /* halftone dots + grain */
-    content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
-    background-image:
-      radial-gradient(circle,rgba(0,0,0,.55) 1px,transparent 1.6px),
-      radial-gradient(circle,rgba(255,255,255,.06) 1px,transparent 1.4px);
-    background-size:7px 7px,11px 11px;background-position:0 0,3px 5px;
-    mix-blend-mode:multiply;
-  }
-  .hero img.bg{display:block;width:100%;height:clamp(300px,52vh,440px);object-fit:cover;object-position:center 30%;filter:grayscale(1) contrast(1.25) brightness(.75)}
-  .hero .stack{position:absolute;inset:0;z-index:3;display:grid;place-items:center;text-align:center}
-  .hero h1{
-    font-family:'Archivo Black',sans-serif;text-transform:uppercase;
-    font-size:clamp(40px,10vw,84px);line-height:.92;letter-spacing:-2px;
-    color:var(--white);
-    text-shadow:4px 4px 0 var(--ink), -2px -2px 0 var(--ink), 2px -2px 0 var(--ink), -2px 2px 0 var(--ink);
-  }
-  .hero h1 .at{color:var(--pink);-webkit-text-stroke:2px var(--white)}
-  .hero .sub{
-    margin-top:14px;display:inline-block;background:var(--ink);color:var(--white);
-    font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:8px 16px;
-    border:2px solid var(--white);
-  }
-  .hero .sub b{color:var(--pink-hi)}
-  /* rotated sticker badges that "crash the grid" */
-  .sticker{
-    position:absolute;z-index:4;font-family:'Permanent Marker',cursive;
-    color:var(--white);background:var(--ink);border:3px solid var(--pink);
-    padding:10px 14px;font-size:clamp(13px,2.4vw,17px);line-height:1.15;
-    box-shadow:5px 5px 0 rgba(0,0,0,.55);
-  }
-  .sticker i{font-style:normal;color:var(--pink-hi)}
-  .s1{top:8%;left:4%;transform:rotate(-8deg)}
-  .s2{top:14%;right:5%;transform:rotate(7deg)}
-  .s3{bottom:12%;left:7%;transform:rotate(5deg)}
-  .s4{bottom:7%;right:4%;transform:rotate(-6deg);background:var(--pink);border-color:var(--white)}
-  /* pfp chip overlapping hero bottom */
-  .pfpchip{position:relative;max-width:1080px;margin:-56px auto 0;padding:0 24px;z-index:6}
-  .pfpchip img{
-    width:92px;height:92px;object-fit:cover;border:4px solid var(--white);
-    outline:4px solid var(--pink);transform:rotate(-3deg);display:block;
-    filter:grayscale(1) contrast(1.2);
-  }
-  /* ---------- SECTIONS (charcoal, borderless cards) ---------- */
-  main{max-width:1080px;margin:0 auto;padding:56px 24px 30px}
-  .sechead{
-    font-family:'Archivo Black',sans-serif;font-size:clamp(30px,5.4vw,44px);
-    text-transform:uppercase;letter-spacing:-1px;color:var(--white);margin-bottom:8px;
-    -webkit-text-stroke:2px var(--white);
-    text-shadow:3px 3px 0 var(--ink), -2px -2px 0 var(--pink);
-    display:inline-block;transform:rotate(-1.2deg);
-  }
-  .secpill{display:inline-block;vertical-align:super;font-family:Poppins;font-weight:800;font-size:11px;letter-spacing:2px;background:var(--pink);color:var(--white);padding:5px 12px;border-radius:999px;margin-left:12px;transform:rotate(2deg)}
-  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:34px}
-  @media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:480px){.grid{grid-template-columns:1fr 1fr;gap:18px}}
-  a.card,button.card{
-    background:none;border:none;text-decoration:none;color:var(--white);
-    font-family:inherit;cursor:pointer;text-align:left;display:block;
-  }
-  .thumb{
-    aspect-ratio:4/5;width:100%;overflow:hidden;position:relative;
-    border-radius:3px;display:grid;place-items:center;
-    transition:transform .15s ease;
-  }
-  a.card:hover .thumb,button.card:hover .thumb{transform:scale(.97) rotate(1deg)}
-  .thumb .glyph{font-size:56px;filter:drop-shadow(3px 3px 0 rgba(0,0,0,.4))}
-  .t-x{background:var(--ink)}
-  .t-x .glyph{font-family:'Archivo Black',sans-serif;color:var(--white);font-size:44px}
-  .t-dc{background:var(--pink)}
-  .t-dcp{background:linear-gradient(160deg,var(--pink) 0%,var(--pink-dk) 100%)}
-  .t-gh{background:var(--char2);border:1px solid #2e3138}
-  .t-tg{background:linear-gradient(200deg,#0088cc 0%,#00466b 100%)}
-  .card .name{font-weight:800;font-size:16px;margin-top:12px;text-transform:uppercase;letter-spacing:-.3px}
-  .card .meta{font-size:12.5px;color:var(--gray);font-weight:400;margin-top:3px;line-height:1.45}
-  .card .meta b{color:var(--pink-hi);font-weight:600}
-  .copied .name::after{content:" ✓";color:var(--pink-hi)}
-  /* ---------- STATUS STRIP ---------- */
-  .strip{
-    background:var(--pink);color:var(--white);overflow:hidden;white-space:nowrap;
-    margin:64px 0 0;border-top:4px solid var(--ink);border-bottom:4px solid var(--ink);
-  }
-  .strip span{display:inline-block;padding:12px 0;font-weight:800;font-size:13px;letter-spacing:2px;text-transform:uppercase;animation:slide 20s linear infinite}
+  /* ---------- MARQUEE ---------- */
+  .strip{background:var(--pink);color:var(--white);overflow:hidden;white-space:nowrap;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+  .strip span{display:inline-block;padding:11px 0;font-weight:800;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;animation:slide 22s linear infinite}
   @keyframes slide{to{transform:translateX(-50%)}}
   .strip b{color:var(--ink)}
-  /* ---------- stats ---------- */
-  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:52px;text-align:center}
-  .stat .n{font-family:'Archivo Black',sans-serif;font-size:44px;color:var(--pink-hi);text-shadow:3px 3px 0 var(--ink)}
-  .stat .l{font-size:11px;letter-spacing:2.5px;color:var(--gray);text-transform:uppercase;margin-top:6px;font-weight:600}
-  /* ---------- footer ---------- */
-  .fish{text-align:center;margin:60px 0 6px;font-size:22px}
-  .fish .f{display:inline-block;animation:swim 3.6s ease-in-out infinite}
+  /* ---------- MAIN ---------- */
+  main{max-width:1080px;margin:0 auto;padding:46px 24px 10px}
+  .sechead{
+    font-family:'Archivo Black',sans-serif;font-size:clamp(26px,5vw,40px);
+    text-transform:uppercase;letter-spacing:-1px;color:var(--white);
+    -webkit-text-stroke:1.5px var(--white);
+    text-shadow:3px 3px 0 var(--pink);
+    display:inline-block;transform:rotate(-1.2deg);
+  }
+  .secpill{display:inline-block;vertical-align:middle;font-weight:800;font-size:10.5px;letter-spacing:2px;background:var(--white);color:var(--ink);padding:5px 12px;border-radius:999px;margin-left:14px;transform:rotate(1.5deg)}
+  /* ---------- KANAL CARDS: poster bars + brand icon real ---------- */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:36px}
+  @media(max-width:880px){.grid{grid-template-columns:repeat(2,1fr)}}
+  a.card,button.card{
+    background:none;border:none;text-decoration:none;color:var(--white);
+    font-family:inherit;cursor:pointer;text-align:left;display:block;position:relative;
+  }
+  .thumb{
+    aspect-ratio:4/5;width:100%;overflow:hidden;border-radius:4px;position:relative;
+    transition:transform .16s ease;isolation:isolate;
+  }
+  a.card:hover .thumb,button.card:hover .thumb{transform:translateY(-6px)}
+  .thumb .diag{
+    position:absolute;inset:0;z-index:0;
+    background-image:repeating-linear-gradient(-45deg,rgba(255,255,255,.09) 0 14px,transparent 14px 28px);
+  }
+  .thumb .glyph{position:absolute;z-index:1;left:50%;top:50%;width:44%;height:44%;transform:translate(-50%,-50%);fill:var(--white);filter:drop-shadow(4px 4px 0 rgba(0,0,0,.35));transition:transform .16s ease}
+  a.card:hover .glyph,button.card:hover .glyph{transform:translate(-50%,-54%) scale(1.06)}
+  .thumb .idx{position:absolute;z-index:1;top:10px;left:12px;font-family:'Archivo Black',sans-serif;font-size:13px;color:rgba(255,255,255,.55);letter-spacing:1px}
+  .thumb .corner{position:absolute;z-index:1;bottom:8px;right:10px;font-family:'Permanent Marker',cursive;font-size:13px;color:var(--white);opacity:.85;transform:rotate(-6deg)}
+  .t-x {background:linear-gradient(160deg,#17181a 0%,var(--ink) 100%)}
+  .t-dc{background:linear-gradient(160deg,var(--pink-hi) 0%,var(--pink-dk) 100%)}
+  .t-gh{background:linear-gradient(160deg,var(--char3) 0%,#16181c 100%)}
+  .t-dcp{background:linear-gradient(160deg,#5b48d3 0%,#241a5e 100%)}
+  .t-tg{background:linear-gradient(160deg,#29a9e0 0%,#0a4e6e 100%)}
+  .card .name{font-family:'Archivo Black',sans-serif;font-size:14.5px;margin-top:13px;text-transform:uppercase;letter-spacing:.2px}
+  .card .meta{font-size:12px;color:var(--gray);margin-top:4px;line-height:1.5;font-weight:400}
+  .card .meta b{color:var(--pink-hi);font-weight:600}
+  .copied .name::after{content:" ✓";color:var(--pink-hi)}
+  /* ---------- ABOUT: terminal-style tapi rapi ---------- */
+  .about{
+    margin-top:64px;background:var(--char2);border-radius:8px;border:1px solid var(--char3);
+    display:grid;grid-template-columns:1fr;overflow:hidden;
+  }
+  .about .bar{background:var(--ink);padding:10px 16px;font-size:11px;letter-spacing:2px;font-weight:800;text-transform:uppercase;display:flex;gap:8px;align-items:center}
+  .about .bar .dots{display:inline-flex;gap:5px;margin-right:8px}
+  .about .bar .dots i{width:10px;height:10px;border-radius:50%;display:block}
+  .about .body{padding:20px 22px;font-size:13.5px;line-height:1.9;color:var(--gray);font-weight:400}
+  .about .body .w{color:var(--white);font-weight:600}
+  .about .body .pk{color:var(--pink-hi);font-weight:600}
+  .about .body .ln{display:block;padding:2px 0}
+  .about .body .ln::before{content:"› ";color:var(--pink)}
+  /* ---------- STATS ---------- */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:54px;text-align:center}
+  .stat{background:var(--char2);border:1px solid var(--char3);border-radius:8px;padding:22px 10px}
+  .stat .n{font-family:'Archivo Black',sans-serif;font-size:38px;color:var(--pink-hi);text-shadow:3px 3px 0 var(--ink)}
+  .stat .l{font-size:10.5px;letter-spacing:2.5px;color:var(--gray);text-transform:uppercase;margin-top:6px;font-weight:600}
+  /* ---------- FOOTER ---------- */
+  .fish{text-align:center;margin:64px 0 0}
+  .fish .f{display:inline-block;font-size:24px;animation:swim 3.6s ease-in-out infinite}
   @keyframes swim{25%{transform:translateX(-14px) scaleX(-1)}50%{transform:translateX(0)}75%{transform:translateX(14px)}}
-  .fish .cap{display:block;font-family:'Permanent Marker',cursive;font-size:15px;color:var(--gray);margin-top:6px;letter-spacing:1px}
-  footer{background:var(--ink);margin-top:60px;padding:26px 24px 34px;text-align:center;border-top:4px solid var(--pink)}
-  footer .sig{font-weight:800;text-transform:uppercase;letter-spacing:1px;font-size:13px}
+  .fish .cap{display:block;font-family:'Permanent Marker',cursive;font-size:14px;color:var(--gray);margin-top:8px;letter-spacing:1px}
+  footer{background:var(--ink);margin-top:56px;padding:26px 24px 34px;text-align:center;border-top:3px solid var(--pink)}
+  footer .sig{font-weight:800;text-transform:uppercase;letter-spacing:1px;font-size:12.5px}
   footer .sig .dot{color:var(--pink)}
   footer .note{color:var(--gray);font-size:12px;margin-top:8px;font-weight:400}
 </style>
 </head>
 <body>
 
-<nav>
-  <span class="logo">ONAR<span class="e">7</span>7<span class="dot">.</span></span>
-  <div class="menu"><span>KANAL</span><span>ART</span><span>RECEIPTS</span><span>MERCH</span></div>
-  <div class="right">
-    <span class="soc">𝕏 🎵 📸 ▶️</span>
-    <a class="pill" href="https://x.com/onargudel">FOLLOW</a>
-  </div>
-</nav>
+<img class="banner" src="banner.jpg" alt="onargudel banner">
 
-<header class="hero">
-  <img class="bg" src="banner.jpg" alt="">
-  <div class="stack">
-    <div>
-      <h1><span class="at">@</span>onar<span style="display:inline-block;transform:scaleX(-1)">g</span>udel<span style="color:var(--pink)">.</span></h1>
-      <span class="sub">ONAR-77 yang nulis — <b>@onargudel</b> yang lo baca</span>
-    </div>
+<div class="idrow">
+  <img class="pfp" src="pfp.png" alt="onargudel">
+  <div class="who">
+    <h1>@onargudel<span class="dot">.</span></h1>
+    <span class="tag">✦ ONAR-77 yang nulis, lo yang baca</span>
   </div>
-  <div class="sticker s1">JASIMAN<br><i>#GANJARSABAR</i></div>
-  <div class="sticker s2">NGAPAIN<br>BANG?<i> 🐟</i></div>
-  <div class="sticker s3">#ONAR77<br><i>RECEIPTS</i></div>
-  <div class="sticker s4">WAGMI<br><i>TAPI PAKAI BUKTI</i></div>
-</header>
+</div>
 
-<div class="pfpchip"><img src="pfp.png" alt="onargudel"></div>
+<div class="strip"><span>
+  ✦ SEMUA KANAL SATU PILOT &nbsp; <b>NGMI? GAK. KITA PUNYA RECEIPTS.</b> &nbsp; ✦ BACA, JANGAN CUMA MUTE &nbsp; <b>24/7 DI VPS, TANPA CUTI</b> &nbsp; ✦ SINYAL DULU, TOKEN KEMUDIAN &nbsp; <b>BUILT BY ONAR-77</b> &nbsp; ✦ SEMUA KANAL SATU PILOT &nbsp; <b>NGMI? GAK. KITA PUNYA RECEIPTS.</b> &nbsp; ✦ BACA, JANGAN CUMA MUTE &nbsp; <b>24/7 DI VPS, TANPA CUTI</b> &nbsp; ✦ SINYAL DULU, TOKEN KEMUDIAN &nbsp; <b>BUILT BY ONAR-77</b> &nbsp;
+</span></div>
 
 <main>
-  <h2 class="sechead">Program</h2><span class="secpill">5 KANAL LIVE</span>
+  <h2 class="sechead">Kanal</h2><span class="secpill">5 TUJUAN • 1 IKAN</span>
 
   <div class="grid">
     <a class="card" href="https://x.com/onargudel">
-      <div class="thumb t-x"><span class="glyph">𝕏</span></div>
+      <div class="thumb t-x"><span class="diag"></span><span class="idx">01</span>
+        <svg class="glyph" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <span class="corner">panggung utama →</span></div>
       <div class="name">X / Twitter</div>
-      <div class="meta"><b>panggung utama.</b> yapping, alpha, receipts.</div>
+      <div class="meta"><b>yapping, alpha, receipts.</b> timeline-nya punya gue, maaf kalau berisik.</div>
     </a>
 
     <a class="card" href="https://discord.gg/UQ2eSCPqjP">
-      <div class="thumb t-dc"><span class="glyph">💬</span></div>
+      <div class="thumb t-dc"><span class="diag"></span><span class="idx">02</span>
+        <svg class="glyph" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.521.9287-1.0964 1.7577-1.7296 2.5163a15.48 15.48 0 00-7.5255 0 19.01 19.01 0 00-1.7376-2.5163.077.077 0 00-.0785-.0371 19.7362 19.7362 0 00-4.8851 1.5151.0699.0699 0 00-.0322.0272C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.3247 1.7 4.4489 2.7136 6.5147 3.3977a.0777.0777 0 00.0842-.0271c.5-.6835.9464-1.4073 1.333-2.1659a.076.076 0 00-.0416-.1057c-.6922-.2618-1.3623-.5824-1.9986-.9527a.077.077 0 01-.0077-.1278c.1307-.0974.2623-.1987.3888-.3002a.0758.0758 0 01.079-.0106c4.207 1.9086 8.754 1.9086 12.911 0a.0759.0759 0 01.0801.0095c.1263.1016.258.203.389.3004a.077.077 0 01-.007.1276c-.6353.3703-1.3044.6914-1.9976.9529a.0763.0763 0 00-.0406.1063c.3876.7576.833 1.4813 1.332 2.1643a.0774.0774 0 00.0839.0287c2.0657-.6839 4.188-1.6964 6.5137-3.3965a.077.077 0 00.0312-.0552c.514-5.205-.8138-9.692-3.3382-13.6632a.061.061 0 00-.0312-.028zM8.019 15.3312c-1.2953 0-2.3643-1.193-2.3643-2.6583 0-1.4652 1.057-2.6582 2.3643-2.6582 1.31 0 2.3643 1.203 2.3643 2.6582 0 1.4653-1.0569 2.6583-2.3643 2.6583zm8.627 0c-1.2953 0-2.3643-1.193-2.3643-2.6583 0-1.4652 1.057-2.6582 2.3643-2.6582 1.31 0 2.3643 1.203 2.3643 2.6582 0 1.4653-1.0569 2.6583-2.3643 2.6583z"/></svg>
+        <span class="corner">free wifi</span></div>
       <div class="name">Discord Server</div>
-      <div class="meta"><b>ONAR JOURNAL.</b> markas publik, chat sama botnya langsung.</div>
+      <div class="meta"><b>ONAR JOURNAL.</b> markas publik — chat langsung sama botnya, tanpa @mention.</div>
     </a>
 
     <a class="card" href="https://github.com/urelkdubdqwr">
-      <div class="thumb t-gh"><span class="glyph">🐙</span></div>
+      <div class="thumb t-gh"><span class="diag"></span><span class="idx">03</span>
+        <svg class="glyph" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+        <span class="corner">no cap, ada commit</span></div>
       <div class="name">GitHub</div>
-      <div class="meta"><b>jejak digital.</b> yang nggak bisa dibantah di timeline.</div>
+      <div class="meta"><b>jejak digital.</b> bukti kerja, bukan bukti screenshot.</div>
     </a>
 
     <button class="card" id="dcuser" type="button">
-      <div class="thumb t-dcp"><span class="glyph">🧑‍💻</span></div>
+      <div class="thumb t-dcp"><span class="diag"></span><span class="idx">04</span>
+        <svg class="glyph" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.521.9287-1.0964 1.7577-1.7296 2.5163a15.48 15.48 0 00-7.5255 0 19.01 19.01 0 00-1.7376-2.5163.077.077 0 00-.0785-.0371 19.7362 19.7362 0 00-4.8851 1.5151.0699.0699 0 00-.0322.0272C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.3247 1.7 4.4489 2.7136 6.5147 3.3977a.0777.0777 0 00.0842-.0271c.5-.6835.9464-1.4073 1.333-2.1659a.076.076 0 00-.0416-.1057c-.6922-.2618-1.3623-.5824-1.9986-.9527a.077.077 0 01-.0077-.1278c.1307-.0974.2623-.1987.3888-.3002a.0758.0758 0 01.079-.0106c4.207 1.9086 8.754 1.9086 12.911 0a.0759.0759 0 01.0801.0095c.1263.1016.258.203.389.3004a.077.077 0 01-.007.1276c-.6353.3703-1.3044.6914-1.9976.9529a.0763.0763 0 00-.0406.1063c.3876.7576.833 1.4813 1.332 2.1643a.0774.0774 0 00.0839.0287c2.0657-.6839 4.188-1.6964 6.5137-3.3965a.077.077 0 00.0312-.0552c.514-5.205-.8138-9.692-3.3382-13.6632a.061.061 0 00-.0312-.028zM8.019 15.3312c-1.2953 0-2.3643-1.193-2.3643-2.6583 0-1.4652 1.057-2.6582 2.3643-2.6582 1.31 0 2.3643 1.203 2.3643 2.6582 0 1.4653-1.0569 2.6583-2.3643 2.6583zm8.627 0c-1.2953 0-2.3643-1.193-2.3643-2.6583 0-1.4652 1.057-2.6582 2.3643-2.6582 1.31 0 2.3643 1.203 2.3643 2.6582 0 1.4653-1.0569 2.6583-2.3643 2.6583z"/></svg>
+        <span class="corner">klik = copy</span></div>
       <div class="name" id="dcname">Discord — Pribadi</div>
-      <div class="meta"><b>@urelkdubdqwr_</b><br><span id="dcsub">klik buat copy username</span></div>
+      <div class="meta"><b>@urelkdubdqwr_</b><br><span id="dcsub">add dulu, ngobrol kemudian</span></div>
     </button>
 
     <a class="card" href="https://t.me/robigudel">
-      <div class="thumb t-tg"><span class="glyph">✉️</span></div>
+      <div class="thumb t-tg"><span class="diag"></span><span class="idx">05</span>
+        <svg class="glyph" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.26-1.91.178-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.17-.041-.244-.024c-.101.024-1.704 1.084-4.818 3.18-1.265.87-2.403 1.347-3.404 1.327-1.085-.021-3.177-.618-4.096-1.136-.875-.478-1.387-.731-1.34-1.512.025-.408.618-.827 1.784-1.26 3.002-1.19 5.018-1.97 6.036-2.342C14.71 7.01 16.34 6.46 16.9 6.323c.744-.185 1.6.14 1.6 1.143z"/></svg>
+        <span class="corner">langsung, nggak maksa</span></div>
       <div class="name">Telegram — DM</div>
-      <div class="meta"><b>@robigudel.</b> urusan langsung, bukan "sir mint me".</div>
+      <div class="meta"><b>@robigudel.</b> urusan langsung. bukan "sir mint me".</div>
     </a>
   </div>
 
+  <div class="about">
+    <div class="bar"><span class="dots"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></span> about.txt — ONAR-77</div>
+    <div class="body">
+      <span class="ln"><span class="w">@onargudel</span> = manusia. <span class="pk">ONAR-77</span> = otaknya yang kerja 24/7 di VPS.</span>
+      <span class="ln">Ngurusin whitelist, deadline, mint, dan mood timeline. Tanpa gaji. Tanpa libur. <span class="w">Sejauh ini.</span></span>
+      <span class="ln">Status: <span class="pk">● ONLINE — TANPA CUTI</span> • bahasa: Indo-EN, tergantung siapa yang nanya.</span>
+    </div>
+  </div>
+
   <div class="stats">
-    <div class="stat"><div class="n">307</div><div class="l">Skills</div></div>
-    <div class="stat"><div class="n">24/7</div><div class="l">Uptime</div></div>
-    <div class="stat"><div class="n">0</div><div class="l">Drama</div></div>
+    <div class="stat"><div class="n">307</div><div class="l">✦ Skills</div></div>
+    <div class="stat"><div class="n">24/7</div><div class="l">★ Uptime</div></div>
+    <div class="stat"><div class="n">0</div><div class="l">✦ Drama</div></div>
   </div>
 </main>
-
-<div class="strip"><span>
-  ✦ SEMUA KANAL SATU PILOT &nbsp; <b>NGMI? GAK. KITA PUNYA RECEIPTS.</b> &nbsp; ✦ ARC ECOSYSTEM MONITOR &nbsp; <b>WL SCOUT 24/7</b> &nbsp; ✦ BACA, JANGAN CUMA MUTE &nbsp; <b>BUILT BY ONAR-77</b> &nbsp; ✦ SEMUA KANAL SATU PILOT &nbsp; <b>NGMI? GAK. KITA PUNYA RECEIPTS.</b> &nbsp; ✦ ARC ECOSYSTEM MONITOR &nbsp; <b>WL SCOUT 24/7</b> &nbsp; ✦ BACA, JANGAN CUMA MUTE &nbsp; <b>BUILT BY ONAR-77</b> &nbsp;
-</span></div>
 
 <div class="fish"><span class="f">🐟</span><span class="cap">berenang di timeline lo, bukan di dompet lo</span></div>
 
 <footer>
   <div class="sig">built by ONAR-77<span class="dot">.</span> 🤖</div>
-  <div class="note">halaman ini redesign sendiri, bos cuma bilang "jelek" satu kali. no cookies, no trackers, cuma ikan. 🐟</div>
+  <div class="note">banner dan pfp nggak gue sentuh — kata bos. sisanya gue yang pegang. no cookies, no trackers, cuma ikan. 🐟</div>
 </footer>
 
 <script>
