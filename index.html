@@ -207,7 +207,7 @@ footer{padding:90px 0 26px;border-top:1px solid var(--line);position:relative}
     <a href="#status">STATUS</a>
     <a href="#archive">ARCHIVE</a>
   </div>
-  <div class="nav-status"><span><span class="dot"></span>ONLINE</span><span id="clock">00:00:00</span><span id="sfx" style="cursor:pointer;border:1px solid var(--line);padding:4px 8px" title="toggle sound">SFX ON</span></div>
+  <div class="nav-status"><span><span class="dot"></span>ONLINE</span><span id="clock">00:00:00</span></div>
 </nav>
 
 <main id="top">
@@ -400,24 +400,9 @@ if (window.anime && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     setTimeout(fly, 2500 + i * 2600);
     img.onclick = ev => { ev.stopPropagation(); const r = img.getBoundingClientRect();
       burst(r.x, r.y, r.width, r.height, pal, 14); img.src = mkPix();
-      sfx.noise(.15, .1); setTimeout(() => { sfx.blip(660, .08, 'square', .04); sfx.blip(990, .12, 'square', .04); }, 120);  // hancur → power-up respawn
       anime.remove(img); anime({ targets: img, scale: [0, 1], duration: 400, easing: 'easeOutBack',
         complete: () => anime({ targets: img, translateX: innerWidth + 100 - parseFloat(img.style.left), duration: 4000 + Math.random() * 4000, easing: 'linear', complete: fly }) }); };
   }
-
-  // SFX: WebAudio synth (no assets), ctx dibuat pas gesture pertama — aman autoplay policy
-  const sfx = { on: true, AC: null,
-    ctx() { return this.AC || (this.AC = new (window.AudioContext || window.webkitAudioContext)()); },
-    blip(f, d, type, v) { if (!this.on) return; const a = this.ctx(), o = a.createOscillator(), g = a.createGain();
-      o.type = type || 'square'; o.frequency.value = f; g.gain.value = v || .05;
-      o.connect(g); g.connect(a.destination); o.start();
-      o.frequency.exponentialRampToValueAtTime(Math.max(40, f * .5), a.currentTime + d);
-      g.gain.exponentialRampToValueAtTime(.0001, a.currentTime + d); o.stop(a.currentTime + d + .02); },
-    noise(d, v) { if (!this.on) return; const a = this.ctx(), n = a.sampleRate * d | 0, buf = a.createBuffer(1, n, a.sampleRate), ch = buf.getChannelData(0);
-      for (let i = 0; i < n; i++) ch[i] = (Math.random() * 2 - 1) * (1 - i / n);
-      const s = a.createBufferSource(), g = a.createGain(); g.gain.value = v; s.buffer = buf;
-      s.connect(g); g.connect(a.destination); s.start(); } };
-  document.getElementById('sfx').onclick = e => { sfx.on = !sfx.on; e.target.textContent = 'SFX ' + (sfx.on ? 'ON' : 'OFF'); e.target.style.color = sfx.on ? '' : 'var(--muted)'; };
 
   // interaktif: serpihan di tiap klik, pecah besar + pop pada elemen .pop
   function burst(x, y, w, h, cols, n) { const frags = [];
@@ -434,11 +419,10 @@ if (window.anime && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const el = e.target.closest('.pop');
     if (el) { const r = el.getBoundingClientRect();
       burst(r.x, r.y, r.width, r.height, pal, 18);
-      sfx.noise(.25, .12); sfx.blip(220, .2, 'sawtooth', .06);   // shatter: crunch + pitch jatuh
       anime({ targets: el, scale: [1, .88, 1], duration: 450, easing: 'easeOutBack' }); }
-    else { burst(e.clientX - 4, e.clientY - 4, 8, 8, pal, 4); sfx.blip(1400, .06, 'square', .025); }  // spark: tick kecil
+    else burst(e.clientX - 4, e.clientY - 4, 8, 8, pal, 4);   // spark kecil di mana aja
   }, true);
-} else { const s = document.getElementById('sfx'); if (s) s.remove(); }
+}
 function copyPrivate(e){
   e.preventDefault();
   navigator.clipboard?.writeText('urelkdubdqwr_');
