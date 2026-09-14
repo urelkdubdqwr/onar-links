@@ -234,7 +234,43 @@ footer{padding:90px 0 26px;border-top:1px solid var(--line);position:relative}
       <div class="poster fx"><img src="assets/header.svg" alt="ONAR-77" style="width:100%;display:block"></div>
       <div class="corner-note">HUMAN + MACHINE + INTERNET</div>
       <div class="sticky s1">EYES ON A BRIGHTER INTERNET.</div>
-      <div class="walkdiv"><div class="robot fx"><i class="antenna"></i><i class="eye e1"></i><i class="eye e2"></i><span class="tag">ONAR-77</span></div></div>
+      <div class="walkdiv"><svg viewBox="0 0 300 90" width="150" aria-label="scorpion to eagle to phoenix">
+  <style>
+    .sc{transform-box:fill-box;transform-origin:20% 80%;animation:sting 3s ease-in-out infinite}
+    .ea{transform-box:fill-box;transform-origin:center;animation:flap 1.9s ease-in-out infinite}
+    .ph{transform-box:fill-box;transform-origin:center bottom;animation:flap 1.5s ease-in-out infinite,rise 3.2s ease-in-out infinite}
+    .ar{fill:#0a0a0b;font:30px Georgia}
+    @keyframes flap{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.72)}}
+    @keyframes rise{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+    @keyframes sting{0%,70%,100%{transform:rotate(0)}80%{transform:rotate(-8deg)}90%{transform:rotate(4deg)}}
+    .t3:hover .ea,.t3:hover .ph{animation-duration:.5s}
+    .t3:hover .ar{fill:#e2a92c}
+    .t3.hit .ph{animation:burst .5s}
+    @keyframes burst{50%{transform:scale(1.35) rotate(8deg)}}
+  </style>
+  <g class="t3" onclick="this.classList.add('hit');setTimeout(()=>this.classList.remove('hit'),500)">
+    <g class="sc" transform="translate(4,26) scale(.62)" fill="none" stroke="#1b2a4a" stroke-width="3.4" stroke-linecap="round">
+      <ellipse cx="14" cy="12" rx="12" ry="6" fill="#1b2a4a" stroke="none"/>
+      <path d="M26 12 h10 l7 -9 l7 13 l7 -8 h12 q8 0 11 -7 l5 -10"/>
+      <circle cx="80" cy="-2" r="2.6" fill="#b23a48" stroke="none"/>
+      <path d="M-2 20 l-8 8 M6 22 l-3 9 M16 21 l3 9 M26 19 l8 8"/>
+    </g>
+    <text class="ar" x="86" y="52">→</text>
+    <g class="ea" transform="translate(136,32) scale(.34)">
+      <path d="M0 14 C-34 -8 -58 0 -72 14 C-52 12 -34 18 -20 26 Z" fill="#0a0a0b"/>
+      <path d="M0 14 C34 -8 58 0 72 14 C52 12 34 18 20 26 Z" fill="#0a0a0b"/>
+      <path d="M0 -4 L7 14 L0 34 L-7 14 Z" fill="#c9a227"/><circle cx="0" cy="-8" r="5" fill="#b23a48"/>
+    </g>
+    <text class="ar" x="186" y="52">→</text>
+    <g class="ph" transform="translate(246,32) scale(.34)">
+      <path d="M0 14 C-34 -8 -58 0 -72 14 C-52 12 -34 18 -20 26 Z" fill="#ff6b2c"/>
+      <path d="M0 14 C34 -8 58 0 72 14 C52 12 34 18 20 26 Z" fill="#ff6b2c"/>
+      <path d="M0 -4 L7 14 L0 40 L-7 14 Z" fill="#c9a227"/>
+      <path d="M0 40 q-6 14 0 24 q8 -8 0 -24" fill="#b23a48"/>
+      <circle cx="0" cy="-8" r="5" fill="#ffd98a" stroke="#b23a48" stroke-width="2"/>
+    </g>
+  </g>
+</svg>
     </div>
   </div>
 </div></section>
