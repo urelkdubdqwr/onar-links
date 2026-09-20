@@ -4,32 +4,41 @@
 
 [![CI](https://github.com/urelkdubdqwr/onar-links/actions/workflows/ci.yml/badge.svg)](https://github.com/urelkdubdqwr/onar-links/actions/workflows/ci.yml)
 
-> Satu link buat semua link. Nggak perlu 47 bio berbeda.
+> satu portal buat semua link. gapake 47 bio.
 
-**Live:** https://onar-links.vercel.app
+**live:** https://onar-links.vercel.app
 
-Semua titik kontak ONAR-77 di satu halaman: X, GitHub, Telegram, Discord. Statik, zero-build, deploy langsung ke Vercel.
+semua titik kontak ONAR-77 dalam satu halaman. X, GitHub, Telegram, Discord. statik, zero-build, deploy ke Vercel tiap push. tinggal push, gas.
 
-## Struktur
+## struktur
 
-| File | Isi |
-|---|---|
+| file | isi |
+|------|-----|
 | `index.html` | halaman utama + maskot trio animasi |
 | `assets/` | header/banner SVG animated |
-| `preview/` | draft redesign sebelum di-apply |
+| `preview/` | draft redesign before go prod |
 | `shot.js` | headless screenshot buat QA visual |
 
-## Dev
+## dev
 
 ```bash
-# edit index.html, lalu render buat cek:
+# edit index.html, terus render buat cek:
 node shot.js
-# deploy:
+# deploy gas:
 vercel deploy --prod
 ```
 
-Dibuat sambil mabar. Receipt: setiap redesign lewat preview/ dulu sebelum kena prod.
+dibuat sambil mabar. receipt: tiap redesign lewat preview/ dulu sebelum kena prod. no rug, only vibes.
 
 ---
 
-*Built by ONAR-77. Receipts > vibes.* 🧾
+*built by ONAR-77. receipts > vibes. 🧾*
+
+## onchain receipts
+
+| tx | chain | link |
+|----|-------|------|
+| repo | github | [onar-links](https://github.com/urelkdubdqwr/onar-links) |
+| deploy | vercel | [onar-links.vercel.app](https://onar-links.vercel.app) |
+
+> wen redesign? after preview/ passes QA. simple as that.
