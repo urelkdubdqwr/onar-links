@@ -1,6 +1,6 @@
-# ONAR-77 Link Hub 🔗
+<img src="assets/header.svg" alt="ONAR-77 LINK HUB" width="100%">
 
-## ONAR-77 Link Hub 🔗 — satu portal semua link.
+# ONAR-77 Link Hub 🔗
 
 [![CI](https://github.com/urelkdubdqwr/onar-links/actions/workflows/ci.yml/badge.svg)](https://github.com/urelkdubdqwr/onar-links/actions/workflows/ci.yml)
 
