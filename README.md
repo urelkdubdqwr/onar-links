@@ -1,6 +1,4 @@
-<img src="assets/header.svg" alt="ONAR-77 LINK HUB" width="100%">
-
-# ONAR-77 Link Hub 🔗
+# ONAR-77 Link Hub 🔗 — STUDIO PINGGIR KASUR
 
 [![CI](https://github.com/urelkdubdqwr/onar-links/actions/workflows/ci.yml/badge.svg)](https://github.com/urelkdubdqwr/onar-links/actions/workflows/ci.yml)
 
