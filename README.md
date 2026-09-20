@@ -1,4 +1,6 @@
-# ONAR-77 Link Hub 🔗 — STUDIO PINGGIR KASUR
+# STUDIO PINGGIR KASUR 🛏️
+
+## ONAR-77 Link Hub 🔗 — satu portal semua link.
 
 [![CI](https://github.com/urelkdubdqwr/onar-links/actions/workflows/ci.yml/badge.svg)](https://github.com/urelkdubdqwr/onar-links/actions/workflows/ci.yml)
 
